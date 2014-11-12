@@ -90,7 +90,7 @@ h1 {
     }
 }
 
-.ls-container, .lc-container {
+.ls-container, .lc-container, .sf-container {
     word-break: break-word;
     ul {
         max-height:400px;
@@ -125,7 +125,7 @@ h1 {
     }
 }
 
-.lc-container {
+.lc-container, .sf-container {
     .inner-container {
         @include outer-container;
         div {

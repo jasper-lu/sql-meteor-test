@@ -288,18 +288,18 @@ h1 {
         .card.small:last-child {
           margin-right: 0; } }
 
-.ls-container, .lc-container {
+.ls-container, .lc-container, .sf-container {
   word-break: break-word; }
-  .ls-container ul, .lc-container ul {
+  .ls-container ul, .lc-container ul, .sf-container ul {
     max-height: 400px;
     overflow-y: scroll; }
-  .ls-container .page-row, .lc-container .page-row {
+  .ls-container .page-row, .lc-container .page-row, .sf-container .page-row {
     border-bottom: 1px solid lightgrey;
     padding: 8px;
     position: relative; }
-    .ls-container .page-row a, .lc-container .page-row a {
+    .ls-container .page-row a, .lc-container .page-row a, .sf-container .page-row a {
       color: #333; }
-    .ls-container .page-row i, .lc-container .page-row i {
+    .ls-container .page-row i, .lc-container .page-row i, .sf-container .page-row i {
       position: absolute;
       right: 4px;
       bottom: 4px;
@@ -331,22 +331,22 @@ h1 {
       .ls-container .inner-container div.image:last-child {
         margin-right: 0; }
 
-.lc-container .inner-container {
+.lc-container .inner-container, .sf-container .inner-container {
   *zoom: 1;
   max-width: 68em;
   margin-left: auto;
   margin-right: auto; }
-  .lc-container .inner-container:before, .lc-container .inner-container:after {
+  .lc-container .inner-container:before, .lc-container .inner-container:after, .sf-container .inner-container:before, .sf-container .inner-container:after {
     content: " ";
     display: table; }
-  .lc-container .inner-container:after {
+  .lc-container .inner-container:after, .sf-container .inner-container:after {
     clear: both; }
-  .lc-container .inner-container div {
+  .lc-container .inner-container div, .sf-container .inner-container div {
     float: left;
     display: block;
     margin-right: 2.8425855704%;
     width: 17.7259315437%; }
-    .lc-container .inner-container div:last-child {
+    .lc-container .inner-container div:last-child, .sf-container .inner-container div:last-child {
       margin-right: 0; }
 
 .clickable {

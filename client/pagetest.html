@@ -17,8 +17,62 @@
             {{> monthlyVTP}}
             {{> weeklyVTP}}
         </div>
+        <div class="row">
+        </div>
+        <div class="row">
+            {{> stripeFailures}}
+            {{> vampErrors}}
+        </div>
     </div>
 </body>
+
+
+<template name="vampErrors">
+<div class="card sf-container">
+    <h2>Latest PageVamp Errors</h2>
+    <ul class="scroll-container">
+        {{#each errors}}
+        {{> vRow}}
+        {{/each}}
+    </ul>
+</div>
+</template>
+
+<!-- vRow needs more work-->
+<template name="vRow">
+    <li class="page-row">
+    <div class="inner-container">
+        <div>{{pageid}}</div>
+        <div>{{url}}</div>
+        <div>{{message}}</div>
+        <div>{{error_code}}</div>
+        <div>{{timestamp}}</div>
+    </div>
+    </li>
+</template>
+
+<template name="stripeFailures">
+<div class="card sf-container">
+    <h2>Latest Stripe Failures</h2>
+    <ul class="scroll-container">
+        {{#each failures}}
+        {{> sfRow}}
+        {{/each}}
+    </ul>
+</div>
+</template>
+
+<template name="sfRow">
+    <li class="page-row">
+    <div class="inner-container">
+        <div>{{firstname}} {{lastname}}</div>
+        <div>{{email}}</div>
+        <div>{{pageid}}</div>
+        <div>{{reason}}</div>
+        <div>{{transactionDate}}</div>
+    </div>
+    </li>
+</template>
 
 <template name="weeklyVTP">
     <div class="card small">
@@ -66,7 +120,6 @@
     <i class="fa fa-link"></i>
 </a>
     </li>
-
 </template>
 
 <template name="latestSites">
