@@ -1,13 +1,27 @@
 <head>
 <title>pagetest</title>
+        <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 </head>
 
 <body>
 <div class="body">
-<h1>Comparison of elo in winning and losing games</h1>
-{{> game}}
+    {{> analyticsBody}}
 </div>
 </body>
+
+<template name="analyticsBody">
+    <button id="al">Log In to Analytics</button>
+    {{> lineGraph}}
+</template>
+
+<template name="lineGraph">
+<canvas id="lineGraph" width="400" height="400"></canvas>
+</template>
+
+<template name="sqlbody">
+<h1>Comparison of elo in winning and losing games</h1>
+{{> game}}
+</template>
 
 <template name="game">
 <div class="game">
