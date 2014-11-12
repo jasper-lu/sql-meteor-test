@@ -43,6 +43,10 @@ html, body {
     @include outer-container;
     max-width:100em;
     padding:1em;
+    .row {
+        @include outer-container;
+        max-width:100em;
+    }
 }
 
 header {
@@ -87,7 +91,6 @@ h1 {
 }
 
 .ls-container, .lc-container {
-    @include outer-container;
     word-break: break-word;
     ul {
         max-height:400px;
@@ -138,5 +141,20 @@ h1 {
     }
     &:active {
         background-color:#c9c9c9;
+    }
+}
+
+.vtp-container {
+    canvas {
+        width:100% !important;
+        height: auto !important;
+    }
+    div {
+        span {
+            height: 16px;
+            width:16px;
+            margin-right:8px;
+            display:inline-block;
+        }
     }
 }

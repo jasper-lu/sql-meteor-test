@@ -9,28 +9,37 @@
     <h3><i class="fa fa-dashboard"></i> Pagevamp Metrics Dashboard</h3>
     </header>
     <div class="body">
-        <div>
+        <div class="row">
         {{> latestSites}}
         {{> latestCustomers}}
         </div>
-        <div>
+        <div class="row">
             {{> monthlyVTP}}
+            {{> weeklyVTP}}
         </div>
     </div>
 </body>
 
 <template name="weeklyVTP">
     <div class="card small">
+        <div class="vtp-container">
         <h2>Weekly VTP</h2>
-
+        <canvas height="400" width="800" id="weeklyVTP"></canvas>
+        <div id="weeklyVTPLegend">
+        </div>
+    </div>
     </div>
 </template>
 
 <template name="monthlyVTP">
     <div class="card small">
+        <div class="vtp-container">
         <h2>Monthly VTP</h2>
-        <canvas id="monthlyVTP"></canvas>
+        <canvas height="400" width="800" id="monthlyVTP"></canvas>
+        <div id="monthlyVTPLegend">
+        </div>
     </div>
+</div>
 </template>
 
 <template name="latestCustomers">
@@ -45,7 +54,7 @@
 </template>
 
 <template name="lcRow">
-    <li class="page-row clickable">
+    <li class="page-row">
     <div class="inner-container">
         <div>{{firstname}} {{lastname}}</div>
         <div>{{email}}</div>
@@ -72,7 +81,7 @@
 </template>
 
 <template name="lsPageRow">
-    <li class="page-row clickable">
+    <li class="page-row">
     <div class="inner-container">
         <div class="image">
             <img src="{{pic_square}}"/>

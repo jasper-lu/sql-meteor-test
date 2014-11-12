@@ -221,6 +221,17 @@ html, body {
     display: table; }
   .body:after {
     clear: both; }
+  .body .row {
+    *zoom: 1;
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100em; }
+    .body .row:before, .body .row:after {
+      content: " ";
+      display: table; }
+    .body .row:after {
+      clear: both; }
 
 header {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -278,16 +289,7 @@ h1 {
           margin-right: 0; } }
 
 .ls-container, .lc-container {
-  *zoom: 1;
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto;
   word-break: break-word; }
-  .ls-container:before, .ls-container:after, .lc-container:before, .lc-container:after {
-    content: " ";
-    display: table; }
-  .ls-container:after, .lc-container:after {
-    clear: both; }
   .ls-container ul, .lc-container ul {
     max-height: 400px;
     overflow-y: scroll; }
@@ -353,3 +355,12 @@ h1 {
     background-color: #f9f9f9; }
   .clickable:active {
     background-color: #c9c9c9; }
+
+.vtp-container canvas {
+  width: 100% !important;
+  height: auto !important; }
+.vtp-container div span {
+  height: 16px;
+  width: 16px;
+  margin-right: 8px;
+  display: inline-block; }
