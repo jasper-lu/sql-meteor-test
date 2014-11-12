@@ -1,0 +1,100 @@
+/* CSS declarations go here */
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "base/base";
+
+$main-color:#4eb972;
+$other-color: blue;
+
+* {
+    @include box-sizing(border-box);
+}
+
+@mixin box-shadow-helper($level) {
+    @if $level == 1 {
+        $value: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+    @if $level == 2 {
+        $value: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    @if $level == 3 {
+        $value: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+    @if $level == 4 {
+        $value: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+    @if $level == 5 {
+        $value: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+    box-shadow: $value;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.body {
+    @include outer-container;
+    margin-top:1em;
+}
+
+header {
+    @include box-shadow-helper(2);
+    height:56px;
+    background-color:$main-color;
+    color:white;
+    h3 {
+        margin:0;
+        line-height:56px;
+        font-weight: normal;
+    }
+}
+
+h1 {
+    text-align:center;
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
+.card {
+    @include box-shadow-helper(1);
+    background-color:white;
+    padding:1em;
+    border-radius:6px;
+    width:auto;
+    height:auto;
+}
+
+.ls-container {
+    @include outer-container;
+    max-width:700px;
+    word-break: break-word
+    ul, .scroll-container {
+        max-height:400px;
+        overflow-y: scroll;
+    }
+    .ls-page-row {
+        border-bottom: 1px solid lightgrey;
+        padding: 8px 0px;
+        .inner-container {
+            @include outer-container;
+            div {
+                @include span-columns(2 of 9);
+                &.image {
+                    @include span-columns(1 of 9);
+                }
+            }
+        }
+    }
+}
+
+.clickable {
+    cursor:pointer;
+    &:hover {
+        background-color: #f9f9f9;
+    }
+    &:active {
+        background-color:#c9c9c9;
+    }
+}

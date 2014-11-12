@@ -1,13 +1,43 @@
 <head>
 <title>pagetest</title>
         <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
+    <header>
+    <h3>Pagevamp Metrics Dashboard</h3>
+    </header>
 <div class="body">
-    {{> analyticsBody}}
+    {{> latestSites}}
 </div>
 </body>
+
+<template name="latestSites">
+<div class="card ls-container">
+    <h2>Latest Published Sites</h2>
+    <ul class="scroll-container">
+    {{#each fbpages}}
+    {{> lsPageRow}}
+    {{/each}}
+</ul>
+    </div>
+</template>
+
+<template name="lsPageRow">
+    <li class="ls-page-row clickable"> 
+    <div class="inner-container">
+        <div class="image">
+            <img src="{{pic_square}}"/>
+        </div>
+        <div>{{name}}</div>
+        <div>{{category}}</div>
+        <div>{{pageid}}</div>
+        <div>{{timestamp}}</div>
+    </div>
+    </li>
+</template>
+
 
 <template name="analyticsBody">
     <button id="al">Log In to Analytics</button>

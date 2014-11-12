@@ -3,9 +3,7 @@
   "dependencies": {
     "basePackages": {
       "bourbon": {},
-      "neat": {},
-      "bitters": {},
-      "scss": {}
+      "neat": {}
     },
     "packages": {
       "bourbon": {
@@ -17,16 +15,6 @@
         "git": "https://github.com/chicagogrooves/meteor-neat.git",
         "tag": "v1.5.0",
         "commit": "6c318cce1c02e822d6a340c547273b29b6379197"
-      },
-      "bitters": {
-        "git": "https://github.com/CiaraBurkett/meteor-bitters.git",
-        "tag": "v1.0.0",
-        "commit": "9272c96ee92405d5c60d1f4261a7a438bef0be8f"
-      },
-      "scss": {
-        "git": "https://github.com/fourseven/meteor-scss.git",
-        "tag": "v0.9.4",
-        "commit": "b5ebfe2bb8a58a03966b6f49e185544a0233ddb0"
       }
     }
   }
