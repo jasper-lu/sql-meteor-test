@@ -5,7 +5,6 @@ Template.latestSites.rendered = function() {
             console.log(e);
             return -1;
         }
-        console.log(r);
         Session.set("latest_sites", r);
     });
 }

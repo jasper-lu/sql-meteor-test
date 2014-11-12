@@ -1,31 +1,59 @@
 <head>
-<title>pagetest</title>
-        <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>pagetest</title>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
-    <h3>Pagevamp Metrics Dashboard</h3>
+    <h3><i class="fa fa-dashboard"></i> Pagevamp Metrics Dashboard</h3>
     </header>
-<div class="body">
-    {{> latestSites}}
-</div>
+    <div class="body">
+        {{> latestSites}}
+        {{> latestCustomers}}
+    </div>
 </body>
+
+<template name="latestCustomers">
+<div class="card lc-container">
+    <h2>Latest Paying Customers</h2>
+    <ul class="scroll-container">
+        {{#each subscriptions}}
+        {{> lcRow}}
+        {{/each}}
+    </ul>
+</div>
+</template>
+
+<template name="lcRow">
+    <li class="page-row clickable">
+    <div class="inner-container">
+        <div>{{firstname}} {{lastname}}</div>
+        <div>{{email}}</div>
+        <div>{{uid}}</div>
+        <div>{{firstPayment}}</div>
+        <div>{{nextPayment}}</div>
+    </div>
+<a target="_blank" href="https://pagevamp.com/page/{{pageid}}">
+    <i class="fa fa-link"></i>
+</a>
+    </li>
+
+</template>
 
 <template name="latestSites">
 <div class="card ls-container">
     <h2>Latest Published Sites</h2>
     <ul class="scroll-container">
-    {{#each fbpages}}
-    {{> lsPageRow}}
-    {{/each}}
-</ul>
-    </div>
+        {{#each fbpages}}
+        {{> lsPageRow}}
+        {{/each}}
+    </ul>
+</div>
 </template>
 
 <template name="lsPageRow">
-    <li class="ls-page-row clickable"> 
+    <li class="page-row clickable">
     <div class="inner-container">
         <div class="image">
             <img src="{{pic_square}}"/>
@@ -35,13 +63,16 @@
         <div>{{pageid}}</div>
         <div>{{timestamp}}</div>
     </div>
+<a target="_blank" href="https://pagevamp.com/page/{{pageid}}">
+    <i class="fa fa-link"></i>
+</a>
     </li>
 </template>
 
 
 <template name="analyticsBody">
-    <button id="al">Log In to Analytics</button>
-    {{> lineGraph}}
+<button id="al">Log In to Analytics</button>
+{{> lineGraph}}
 </template>
 
 <template name="lineGraph">
@@ -65,9 +96,9 @@
         </div>
     </div>
 
-{{#each matches}}
-{{> match}}
-{{/each}}
+    {{#each matches}}
+    {{> match}}
+    {{/each}}
 </div>
 </template>
 

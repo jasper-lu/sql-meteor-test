@@ -5,6 +5,7 @@
 
 $main-color:#4eb972;
 $other-color: blue;
+$link-blue:#2980b9; 
 
 * {
     @include box-sizing(border-box);
@@ -36,7 +37,8 @@ html, body {
 
 .body {
     @include outer-container;
-    margin-top:1em;
+    max-width:100em;
+    padding:1em;
 }
 
 header {
@@ -48,6 +50,9 @@ header {
         margin:0;
         line-height:56px;
         font-weight: normal;
+        i {
+            padding: 16px 24px
+        }
     }
 }
 
@@ -58,33 +63,56 @@ h1 {
 }
 
 .card {
-    @include box-shadow-helper(1);
+    @include box-shadow-helper(1); 
     background-color:white;
     padding:1em;
-    border-radius:6px;
+    border-radius: 4px;
     width:auto;
     height:auto;
 }
 
-.ls-container {
+.ls-container, .lc-container {
     @include outer-container;
-    max-width:700px;
-    word-break: break-word
-    ul, .scroll-container {
+    @include span-columns(6 of 12);
+    word-break: break-word;
+    ul {
         max-height:400px;
         overflow-y: scroll;
     }
-    .ls-page-row {
+    .page-row {
         border-bottom: 1px solid lightgrey;
-        padding: 8px 0px;
-        .inner-container {
-            @include outer-container;
-            div {
-                @include span-columns(2 of 9);
-                &.image {
-                    @include span-columns(1 of 9);
-                }
+        padding: 8px;
+        position:relative;
+        a {
+            color:#333;
+        }
+        i {
+            position:absolute;
+            right:4px;
+            bottom:4px;
+            color: $link-blue;
+        }
+    }
+}
+
+.ls-container {
+    .inner-container {
+        @include outer-container;
+        div {
+            @include span-columns(2 of 9);
+            color:#333;
+            &.image {
+                @include span-columns(1 of 9);
             }
+        }
+    }
+}
+
+.lc-container {
+    .inner-container {
+        @include outer-container;
+        div {
+            @include span-columns(2 of 10);
         }
     }
 }
