@@ -7,6 +7,8 @@ $main-color:#4eb972;
 $other-color: blue;
 $link-blue:#2980b9; 
 
+$small-screen: new-breakpoint(max-width:960px);
+
 * {
     @include box-sizing(border-box);
 }
@@ -69,11 +71,14 @@ h1 {
     border-radius: 4px;
     width:auto;
     height:auto;
+    @include span-columns(6 of 12);
+    @include media($small-screen) {
+        @include span-columnts(12 of 12);
+    }
 }
 
 .ls-container, .lc-container {
     @include outer-container;
-    @include span-columns(6 of 12);
     word-break: break-word;
     ul {
         max-height:400px;
