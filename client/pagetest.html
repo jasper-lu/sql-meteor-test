@@ -5,27 +5,62 @@
 </head>
 
 <body>
+    {{> pageBody}}
+</body>
+
+<template name="pageBody">
     <header>
     <h3><i class="fa fa-dashboard"></i> Pagevamp Metrics Dashboard</h3>
     </header>
+{{#if gLoading}}
+{{> graphs}}
+{{else}}
+{{> loading}}
+{{/if}}
+</template>
+
+<template name="graphs">
     <div class="body">
         <div class="row">
         {{> latestSites}}
         {{> latestCustomers}}
         </div>
         <div class="row">
-            {{> monthlyVTP}}
             {{> weeklyVTP}}
         </div>
         <div class="row">
+            {{> visitsMonth}}
+            {{> visitsWeek}}
         </div>
         <div class="row">
             {{> stripeFailures}}
             {{> vampErrors}}
         </div>
     </div>
-</body>
+</template>
 
+<template name="loading">
+    loading..
+</template>
+
+<template name="onlineNow">
+    <h2>On PageVamp now</h2>
+    <h1>{{number}}</h1>
+</template>
+
+<template name="visitsWeek">
+    <div class="card">
+    <h2>Weekly Site Visits</h2>
+        <h1>{{visits}}</h1>
+    </div>
+</template>
+
+<template name="visitsMonth">
+    <div class="card small">
+    <h2>Monthly Site Visits</h2>
+        <h1>{{visits}}</h1>
+    </div>
+</template>
 
 <template name="vampErrors">
 <div class="card sf-container">
@@ -75,7 +110,7 @@
 </template>
 
 <template name="weeklyVTP">
-    <div class="card small">
+    <div class="card">
         <div class="vtp-container">
         <h2>Weekly VTP</h2>
         <canvas height="400" width="800" id="weeklyVTP"></canvas>
@@ -83,17 +118,6 @@
         </div>
     </div>
     </div>
-</template>
-
-<template name="monthlyVTP">
-    <div class="card small">
-        <div class="vtp-container">
-        <h2>Monthly VTP</h2>
-        <canvas height="400" width="800" id="monthlyVTP"></canvas>
-        <div id="monthlyVTPLegend">
-        </div>
-    </div>
-</div>
 </template>
 
 <template name="latestCustomers">
@@ -151,45 +175,10 @@
 </template>
 
 
-<template name="analyticsBody">
+<template name="login">
 <button id="al">Log In to Analytics</button>
-{{> lineGraph}}
 </template>
 
 <template name="lineGraph">
 <canvas id="lineGraph" width="400" height="400"></canvas>
-</template>
-
-<template name="sqlbody">
-<h1>Comparison of elo in winning and losing games</h1>
-{{> game}}
-</template>
-
-<template name="game">
-<div class="game">
-    <div class="match header">
-        <div class="winner">
-            Winners
-        </div>
-
-        <div class="loser">
-            Losers
-        </div>
-    </div>
-
-    {{#each matches}}
-    {{> match}}
-    {{/each}}
-</div>
-</template>
-
-<template name="match">
-<div class="match">
-    <div class="role winner {{winner}}">
-        {{winner}}
-    </div>
-    <div class="role loser {{loser}}">
-        {{loser}}
-    </div>
-</div>
 </template>

@@ -10,3 +10,22 @@ var drawChart = function(data) {
     var newChart = new Chart(ctx);
     newChart.Line(data);
 }
+
+Template.pageBody.rendered = function() {
+    Meteor.call('getGapiKeys', function(e, r) {
+        gapi.client.setApiKey(r.apiKey);
+        Session.set("table", r.table);
+        gapi.auth.authorize({client_id: r.clientId, scope: scopes, immediate: true}, function(e,r) {
+            console.log(e);
+            console.log(r);
+            gapi.client.load("analytics", "v3", function() {
+                console.log("analytics loaded");
+                    Session.set("loaded", true);
+            });
+        });
+    });
+}
+
+Template.pageBody.gLoading = function() {
+    return Session.get("loaded");
+}

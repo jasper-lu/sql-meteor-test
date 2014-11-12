@@ -30,6 +30,9 @@ if (Meteor.isServer) {
             console.log(result);
 
             return result; 
+        },
+        'getGapiKeys': function() {
+            return gapiKeys; 
         }
     });
 }
