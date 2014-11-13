@@ -5,7 +5,6 @@ Template.stripeFailures.rendered = function() {
             console.log(e);
             return -1;
         }
-        console.log(r);
         Session.set("latest_stripe_failures", r);
     });
 }
@@ -15,8 +14,9 @@ Template.stripeFailures.failures = function() {
     return Session.get("latest_stripe_failures");
 }
 
-Template.stripeFailures.transactionDate = function() {
+Template.sfRow.transactionDate = function() {
     return new Date(this.transaction_date * 100).toDateString();
+    
 }
 
 Template.vampErrors.rendered = function() {
@@ -26,7 +26,6 @@ Template.vampErrors.rendered = function() {
             console.log(e);
             return -1;
         }
-        console.log(r);
         Session.set("latest_vamp_errors", r);
     });
 }
@@ -36,6 +35,6 @@ Template.vampErrors.errors = function() {
     return Session.get("latest_vamp_errors");
 }
 
-Template.vampErrors.timeStamp = function() {
-    return new Date(timestamp).toDateString();
+Template.vRow.timeStamp = function() {
+    return dateString(new Date(this.timestamp));
 }

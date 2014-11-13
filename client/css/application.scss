@@ -78,6 +78,7 @@ h1 {
     margin-top:1em;
     width:auto;
     height:auto;
+    @include outer-container;
     @include span-columns(6 of 12);
     @include media($small-screen) {
         @include span-columns(12 of 12);
@@ -90,7 +91,7 @@ h1 {
     }
 }
 
-.ls-container, .lc-container, .sf-container {
+.ls-container, .lc-container, .sf-container, .rc-container {
     word-break: break-word;
     ul {
         max-height:400px;
@@ -110,8 +111,28 @@ h1 {
             color: $link-blue;
         }
     }
+    .head {
+        background-color:#4eb972;
+        color:white;
+        padding:8px;
+        padding-right:28px;
+        font-weight:bold;
+        @include outer-container;
+        @include box-shadow-helper(1); 
+        div {
+            color:white !important;
+        }
+    }
 }
 
+.rc-container {
+    .inner-container {
+        @include outer-container;
+        div {
+            @include span-columns(3 of 12);
+        }
+    }
+}
 .ls-container {
     .inner-container {
         @include outer-container;
@@ -144,17 +165,10 @@ h1 {
     }
 }
 
-.vtp-container {
+.vtp-container, .visits-container {
     canvas {
         width:100% !important;
         height: auto !important;
     }
-    div {
-        span {
-            height: 16px;
-            width:16px;
-            margin-right:8px;
-            display:inline-block;
-        }
-    }
 }
+

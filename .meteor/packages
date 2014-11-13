@@ -9,4 +9,8 @@ insecure
 pcel:mysql
 d3
 mrt:chartjs
+limemakers:paypal
+meteorhacks:npm
 
+
+npm-container

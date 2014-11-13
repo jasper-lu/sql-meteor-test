@@ -85,17 +85,15 @@ Template.weeklyVTP.rendered = function() {
     */
     //});
     Meteor.call("query", "select from_unixtime(p.created_on) as date, count(p.id) as trials_weekly from fbpages as p where p.published_by=0 and from_unixtime(p.created_on) between (current_date() - interval 8 week) and current_date() group by week(date);", function(e,r) {
-        console.log(r);
         var dates = [];
         var trials = [];
         _.each(r, function(entry) {
             var d = entry.date;
-            var sd = d.toDateString().substring(d.toDateString().indexOf(' ') + 1);
-            dates.push(sd);
+
+            dates.push(dateString(d));
             trials.push(entry.trials_weekly);
         });
         Meteor.call("query", "select from_unixtime(first_payment) as date, count(id) as customers_weekly from stripe_subscriptions where from_unixtime(first_payment) between (current_date() - interval 8 week) and current_date() group by week(date);", function(e,r) {
-            console.log(r);
             var customers = [];
             _.each(r, function(entry) {
                 customers.push(entry.customers_weekly);
@@ -116,9 +114,13 @@ Template.weeklyVTP.rendered = function() {
                     label: "Customers"
                 }]
             }
-            console.log(data);
             week = new Chart(ctx).Line(data, {responsive: true});
         });
     });
 
+}
+
+dateString = function(d) {
+    var sd = d.toDateString().substring(d.toDateString().indexOf(' ') + 1);
+    return sd;
 }

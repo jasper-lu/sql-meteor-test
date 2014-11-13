@@ -20,7 +20,7 @@ Template.pageBody.rendered = function() {
             console.log(r);
             gapi.client.load("analytics", "v3", function() {
                 console.log("analytics loaded");
-                    Session.set("loaded", true);
+                Session.set("loaded", true);
             });
         });
     });
@@ -28,4 +28,27 @@ Template.pageBody.rendered = function() {
 
 Template.pageBody.gLoading = function() {
     return Session.get("loaded");
+}
+
+Template.graphs.rendered = function() {
+    $.getScript("//code.jquery.com/ui/1.11.2/jquery-ui.js").done(function(script, textStatus){ 
+        $( "#from" ).datepicker({
+        changeMonth: true,
+        numberOfMonths: 1,
+        onClose: function( selectedDate ) {
+            $( "#to" ).datepicker( "option", "minDate", selectedDate );
+        }
+        }).datepicker("setDate", -60) ;
+        $( "#to" ).datepicker({
+            defaultDate: "0",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function( selectedDate ) {
+                $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+            }
+        }).datepicker("setDate", -1);;
+    });
+    $("#refreshGraphs").click(function() {
+        
+    });
 }

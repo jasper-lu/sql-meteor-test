@@ -19,6 +19,15 @@ if (Meteor.isServer) {
         queryFunc = function(q, cb) {
             connection.query(q, cb);
         }
+        /*
+        Meteor.Paypal.config = {
+            'host': 'api.sandbox.paypal.com',
+            'port': '',
+            'client_id': paypal.clientId,
+            'client_secret': paypal.secret
+        }
+        
+        */
     });
     Meteor.methods({
         'query': function(query) {
@@ -35,4 +44,5 @@ if (Meteor.isServer) {
             return gapiKeys; 
         }
     });
+
 }

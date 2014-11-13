@@ -2,6 +2,7 @@
     <title>pagetest</title>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 </head>
 
 <body>
@@ -26,11 +27,18 @@
         {{> latestCustomers}}
         </div>
         <div class="row">
+            <label for="from">From</label>
+            <input type="text" id="from" name="from">
+            <label for="to">to</label>
+            <input type="text" id="to" name="to">
+        </div>
+        <div class="row">
+            {{> vampVisitsWeek}}
             {{> weeklyVTP}}
         </div>
         <div class="row">
-            {{> visitsMonth}}
             {{> visitsWeek}}
+            {{> refCodes}}
         </div>
         <div class="row">
             {{> stripeFailures}}
@@ -39,32 +47,62 @@
     </div>
 </template>
 
+<template name="refCodes">
+<div class="card rc-container">
+    <h2>Top Referral Codes</h2>
+    <div class="head inner-container">
+        <div>Name</div>
+        <div>Email</div>
+        <div>Referral Code</div>
+        <div>Times used</div>
+    </div>
+    <ul class="scroll-container">
+        {{#each codes}}
+        {{> rcRow}}
+        {{/each}}
+    </ul>
+</div>
+</template>
+
+<template name="rcRow">
+    <li class="page-row rc-row">
+    <div class="inner-container">
+        <div>{{firstname}} {{lastname}}</div>
+        <div>{{email}}</div>
+        <div>{{ref_code}}</div>
+        <div>{{count}}</div>
+    </div>
+    </li>
+</template>
+
 <template name="loading">
     loading..
 </template>
 
-<template name="onlineNow">
-    <h2>On PageVamp now</h2>
-    <h1>{{number}}</h1>
-</template>
-
-<template name="visitsWeek">
-    <div class="card">
-    <h2>Weekly Site Visits</h2>
-        <h1>{{visits}}</h1>
+<template name="vampVisitsWeek">
+    <div class="card visits-container">
+    <h2>Weekly PageVamp Visits</h2>
+    <canvas id="visitsVampWeekly" width="800" height="400"></canvas>
     </div>
 </template>
 
-<template name="visitsMonth">
-    <div class="card small">
-    <h2>Monthly Site Visits</h2>
-        <h1>{{visits}}</h1>
+<template name="visitsWeek">
+    <div class="card visits-container">
+    <h2>Weekly Site Visits</h2>
+    <canvas id="visitsWeekly" width="800" height="400"></canvas>
     </div>
 </template>
 
 <template name="vampErrors">
 <div class="card sf-container">
     <h2>Latest PageVamp Errors</h2>
+    <div class="head inner-container">
+        <div>Page Id</div>
+        <div>Url</div>
+        <div>Messagee</div>
+        <div>Error Code</div>
+        <div>Date</div>
+    </div>
     <ul class="scroll-container">
         {{#each errors}}
         {{> vRow}}
@@ -81,7 +119,7 @@
         <div>{{url}}</div>
         <div>{{message}}</div>
         <div>{{error_code}}</div>
-        <div>{{timestamp}}</div>
+        <div>{{timeStamp}}</div>
     </div>
     </li>
 </template>
@@ -89,6 +127,13 @@
 <template name="stripeFailures">
 <div class="card sf-container">
     <h2>Latest Stripe Failures</h2>
+    <div class="head inner-container">
+        <div>Name</div>
+        <div>Email</div>
+        <div>Page Id</div>
+        <div>Reason</div>
+        <div>Date</div>
+    </div>
     <ul class="scroll-container">
         {{#each failures}}
         {{> sfRow}}
@@ -114,8 +159,6 @@
         <div class="vtp-container">
         <h2>Weekly VTP</h2>
         <canvas height="400" width="800" id="weeklyVTP"></canvas>
-        <div id="weeklyVTPLegend">
-        </div>
     </div>
     </div>
 </template>
@@ -123,6 +166,13 @@
 <template name="latestCustomers">
 <div class="card lc-container">
     <h2>Latest Paying Customers</h2>
+    <div class="head inner-container">
+        <div>Name</div>
+        <div>Email</div>
+        <div>User Id</div>
+        <div>First Payment</div>
+        <div>Next Payment</div>
+    </div>
     <ul class="scroll-container">
         {{#each subscriptions}}
         {{> lcRow}}
@@ -149,6 +199,13 @@
 <template name="latestSites">
 <div class="card ls-container">
     <h2>Latest Published Sites</h2>
+    <div class="head inner-container">
+        <div class="image">Pic</div>
+        <div>Name</div>
+        <div>Category</div>
+        <div>Page Id</div>
+        <div>Date</div>
+    </div>
     <ul class="scroll-container">
         {{#each fbpages}}
         {{> lsPageRow}}
@@ -172,13 +229,4 @@
     <i class="fa fa-link"></i>
 </a>
     </li>
-</template>
-
-
-<template name="login">
-<button id="al">Log In to Analytics</button>
-</template>
-
-<template name="lineGraph">
-<canvas id="lineGraph" width="400" height="400"></canvas>
 </template>
