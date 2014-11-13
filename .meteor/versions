@@ -35,10 +35,12 @@ minifiers@1.1.0
 minimongo@1.0.3
 mobile-status-bar@1.0.0
 mongo@1.0.6
+mrgalaxy:stripe@1.5.6
 mrt:chartjs@0.0.6
 npm-container@1.0.0
 observe-sequence@1.0.2
 ordered-dict@1.0.0
+paypal-sdk-classic@0.0.0
 pcel:mysql@0.1.0
 random@1.0.0
 reactive-dict@1.0.3

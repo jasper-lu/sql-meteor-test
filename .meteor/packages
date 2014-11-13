@@ -11,6 +11,8 @@ d3
 mrt:chartjs
 limemakers:paypal
 meteorhacks:npm
-
+paypal-sdk-classic
 
 npm-container
+mrgalaxy:stripe
+

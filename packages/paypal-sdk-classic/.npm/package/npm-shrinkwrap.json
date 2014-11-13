@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "paypal-classic-sdk": {
+      "version": "https://github.com/trainerbill/paypal-classic-sdk/archive/16e603bd272a093d8862aef1ca79a0fc6112cd0c.tar.gz",
+      "dependencies": {
+        "node-uuid": {
+          "version": "1.4.1"
+        },
+        "underscore": {
+          "version": "1.6.0"
+        }
+      }
+    }
+  }
+}

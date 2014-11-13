@@ -22,7 +22,7 @@
 
 <template name="graphs">
     <div class="body">
-        <h1 class="weekly"><i class="fa fa-line-chart"></i> Weekly Data</h1>
+        <h1 class="weekly"><i class="fa fa-line-chart"></i> Metrics Over Time</h1>
         <div class="row">
             {{> datePick}}
         </div>
@@ -32,6 +32,7 @@
         </div>
         <div class="row">
             {{> visitsWeek}}
+            {{> monthlyRevenue}}
         </div>
         <h1 class="metrics"><i class="fa fa-dashboard"></i> Product Metrics</h1>
         <div class="row">
@@ -89,6 +90,14 @@
 
 <template name="loading">
 <div class="spinner-container">
+<svg class="spinner" width="195px" height="195px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+   <circle class="path" fill="none" stroke-width="2" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+   </svg>
+   </div>
+</template>
+
+<template name="smallLoading">
+<div class="spinner-container small">
 <svg class="spinner" width="195px" height="195px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
    <circle class="path" fill="none" stroke-width="2" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
    </svg>
@@ -168,6 +177,19 @@
         <div>{{transactionDate}}</div>
     </div>
     </li>
+</template>
+
+<template name="monthlyRevenue">
+    <div class="card">
+        <div class="vtp-container">
+            <h2>Monthly Revenue</h2>
+            {{#if loaded}}
+            {{else}}
+            {{> smallLoading}} 
+            {{/if}}
+            <canvas height="400" width="800" id="monthlyRev"></canvas>
+        </div>
+    </div>
 </template>
 
 <template name="weeklyVTP">

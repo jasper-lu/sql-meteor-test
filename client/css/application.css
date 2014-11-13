@@ -433,6 +433,10 @@ h1 {
   align-items: center;
   justify-content: center;
   margin-top: 200px; }
+  .spinner-container.small {
+    width: 100%;
+    height: 400px;
+    margin-top: 50px; }
 
 .spinner {
   -webkit-animation: rotator 1.4s linear infinite;

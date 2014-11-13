@@ -15,7 +15,7 @@ Template.stripeFailures.failures = function() {
 }
 
 Template.sfRow.transactionDate = function() {
-    return new Date(this.transaction_date * 100).toDateString();
+    return new Date(this.transaction_date * 1000).toDateString();
     
 }
 
