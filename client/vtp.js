@@ -53,7 +53,7 @@ Template.weeklyVTP.loadChart = function(from, to) {
                     label: "Customers"
                 }]
             }
-            week = new Chart(ctx).Line(data, {responsive: true});
+            week = new Chart(ctx).Line(data, {responsive: true, scaleShowLabels: true});
         });
     });
 

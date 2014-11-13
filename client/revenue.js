@@ -41,9 +41,10 @@ Template.monthlyRevenue.loadGraph = function(from, to) {
     }
     revData = [];
     Meteor.call("paypalTransactionsQuery", query, function(e, r) {
-        console.log(r);
+        //console.log(r);
         var payments = [];
         var dates = [];
+        console.log(r);
         _.each(r, function(val, key) {
             if(key.indexOf("L_NETAMT") == 0) {
                 payments.push(val);
@@ -53,7 +54,7 @@ Template.monthlyRevenue.loadGraph = function(from, to) {
             }
         });
             for(var i = 0; i != payments.length; ++i) {
-                console.log(i);
+                //console.log(i);
                 revData.push({
                     date: dates[i],
                     month: dates[i].getMonth(),
@@ -69,10 +70,11 @@ Template.monthlyRevenue.loadGraph = function(from, to) {
             }
         }
         if(toSec != null) {
-            stripeQuery.lte = toSec;
+            stripeQuery.created.lte = toSec;
         }
-        console.log(stripeQuery);
+        //console.log(stripeQuery);
         Meteor.call("stripeListQuery", stripeQuery, function(e, r) {
+            console.log(r);
             //format into revdata array
             _.each(r, function(d) {
                 var dateObj = new Date(d.created * 1000);
@@ -82,7 +84,7 @@ Template.monthlyRevenue.loadGraph = function(from, to) {
                     pay: d.amount/100
                 });
             });
-            console.log(revData);
+            //console.log(revData);
             //format data into monthly
             monthlyData = {};
             _.each(revData, function(d) {
@@ -92,7 +94,7 @@ Template.monthlyRevenue.loadGraph = function(from, to) {
                     monthlyData[d.month] = parseFloat(d.pay);
                 }
             });
-            console.log(monthlyData);
+            //console.log(monthlyData);
 
             //into separate arrays now
             var labels = [];
@@ -115,6 +117,7 @@ Template.monthlyRevenue.loadGraph = function(from, to) {
             }
             //get canvas context
             var ctx = document.getElementById("monthlyRev").getContext("2d");
+            $('#monthlyRev').css('display','block');
             //if graph is made already, destroy it
             if(revenue) {
                 revenue.destroy();

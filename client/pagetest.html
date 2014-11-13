@@ -6,18 +6,38 @@
 </head>
 
 <body>
-    {{> pageBody}}
+    {{>outerBody}}
 </body>
 
-<template name="pageBody">
+<template name="outerBody">
     <header>
     <h3><i class="fa fa-dashboard"></i> Pagevamp Metrics Dashboard</h3>
     </header>
-{{#if gLoading}}
-{{> graphs}}
-{{else}}
-{{> loading}}
-{{/if}}
+    {{#if currentUser}}
+    {{> pageBody}}
+    {{else}}{{#if loggingIn}}
+        {{> loading}}
+        {{else}}
+        {{> login}}
+        {{/if}}
+    {{/if}}
+</template>
+
+<template name="pageBody">
+    {{#if gLoaded}}
+        {{> graphs}}
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>
+
+<template name="login">
+<div class="login">
+<h1 class="weekly">Enter the Password</h1>
+    <form id="loginForm">
+<input id="password" type="password"/>
+</form>
+</div>
 </template>
 
 <template name="graphs">
@@ -187,7 +207,7 @@
             {{else}}
             {{> smallLoading}} 
             {{/if}}
-            <canvas height="400" width="800" id="monthlyRev"></canvas>
+            <canvas style="display:none" height="400" width="800" id="monthlyRev"></canvas>
         </div>
     </div>
 </template>

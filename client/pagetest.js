@@ -11,16 +11,20 @@ var drawChart = function(data) {
     newChart.Line(data);
 }
 
+Template.outerBody.loggingIn = function() {
+    return Meteor.loggingIn();
+}
+
 Template.pageBody.rendered = function() {
     $.getScript("https://apis.google.com/js/client.js?onload=handleClientLoad").done(function(script, textStatus) {
         Meteor.call('getGapiKeys', function(e, r) {
             gapi.client.setApiKey(r.apiKey);
             Session.set("table", r.table);
             gapi.auth.authorize({client_id: r.clientId, scope: scopes, immediate: true}, function(e,r) {
-                console.log(e);
-                console.log(r);
+                //console.log(e);
+                //console.log(r);
                 gapi.client.load("analytics", "v3", function() {
-                    console.log("analytics loaded");
+                    //console.log("analytics loaded");
                     Session.set("loaded", true);
                 });
             });
@@ -28,7 +32,7 @@ Template.pageBody.rendered = function() {
     });
 }
 
-Template.pageBody.gLoading = function() {
+Template.pageBody.gLoaded = function() {
     return Session.get("loaded");
 }
 
@@ -72,4 +76,5 @@ refreshLineGraphs = function(from, to) {
     }
 
     Template.weeklyVTP.loadChart(fromUnixWrapper(fromUnix), fromUnixWrapper(toUnix));
+    Template.monthlyRevenue.loadGraph(from,to);
 }

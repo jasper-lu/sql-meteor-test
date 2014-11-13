@@ -10,7 +10,7 @@ Template.latestSites.rendered = function() {
 }
 
 Template.latestSites.fbpages = function() {
-    console.log(Session.get("latest_sites"));
+    //console.log(Session.get("latest_sites"));
     return Session.get("latest_sites");
 }
 

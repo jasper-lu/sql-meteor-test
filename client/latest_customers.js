@@ -6,13 +6,13 @@ Template.latestCustomers.rendered = function() {
             console.log(e);
             return -1;
         }
-        console.log(r);
+        //console.log(r);
         Session.set("latest_customers_month", r);
     });
 }
 
 Template.latestCustomers.subscriptions = function() {
-    console.log(Session.get("latest_customers")); 
+    //console.log(Session.get("latest_customers")); 
     return Session.get("latest_customers_month");
 }
 

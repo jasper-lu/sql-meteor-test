@@ -15,4 +15,6 @@ paypal-sdk-classic
 
 npm-container
 mrgalaxy:stripe
+accounts-ui
+accounts-password
 

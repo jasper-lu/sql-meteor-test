@@ -11,7 +11,7 @@ Template.visitsWeek.loadChart = function(from, to) {
         "dimensions": "ga:isoyearisoweek",
         "metrics": "ga:sessions"
     }).execute(function(r) {
-        console.log(r);
+        //console.log(r);
 
         if(visitsWeekly) {
             visitsWeekly.destroy();
@@ -38,7 +38,7 @@ Template.visitsWeek.loadChart = function(from, to) {
                     label: "Visits"
                 }]
             }
-            console.log(data);
+            //console.log(data);
             visitsWeekly = new Chart(ctx).Line(data, {responsive: true});
     });
 
@@ -51,7 +51,7 @@ Template.vampVisitsWeek.loadChart = function(from, to) {
         "dimensions": "ga:isoyearisoweek",
         "metrics": "ga:sessions"
     }).execute(function(r) {
-        console.log(r);
+        //console.log(r);
         if(vampVisitsWeekly) {
             vampVisitsWeekly.destroy();
         }
@@ -76,7 +76,7 @@ Template.vampVisitsWeek.loadChart = function(from, to) {
                     label: "Visits"
                 }]
             }
-            console.log(data);
+            //console.log(data);
             vampVisitsWeekly = new Chart(ctx).Line(data, {responsive: true});
     });
 }
