@@ -1,4 +1,5 @@
 Template.visitsWeek.rendered = function() {
+    visitsWeekly = null;
     Template.visitsWeek.loadChart("60daysAgo", "today");
 }
 
@@ -11,6 +12,11 @@ Template.visitsWeek.loadChart = function(from, to) {
         "metrics": "ga:sessions"
     }).execute(function(r) {
         console.log(r);
+
+        if(visitsWeekly) {
+            visitsWeekly.destroy();
+        }
+
         var d = r.rows;
 
         var weeks = [];
@@ -46,6 +52,9 @@ Template.vampVisitsWeek.loadChart = function(from, to) {
         "metrics": "ga:sessions"
     }).execute(function(r) {
         console.log(r);
+        if(vampVisitsWeekly) {
+            vampVisitsWeekly.destroy();
+        }
         var d = r.rows;
 
         var weeks = [];
@@ -68,11 +77,12 @@ Template.vampVisitsWeek.loadChart = function(from, to) {
                 }]
             }
             console.log(data);
-            visitsWeekly = new Chart(ctx).Line(data, {responsive: true});
+            vampVisitsWeekly = new Chart(ctx).Line(data, {responsive: true});
     });
 }
 
 Template.vampVisitsWeek.rendered = function() {
+    vampVisitsWeekly = null;
     Template.vampVisitsWeek.loadChart("60daysAgo", "today");
 }
 

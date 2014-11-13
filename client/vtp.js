@@ -12,12 +12,17 @@ Template.weeklyVTP.loadGoogleData = function(d) {
 }
 
 Template.weeklyVTP.rendered = function() {
+    week = null;
     /**Messy async withiin an async call**/
     Template.weeklyVTP.loadChart("(current_date() - interval 8 week)", "current_date()");
 }
 
 Template.weeklyVTP.loadChart = function(from, to) {
     var ctx = document.getElementById("weeklyVTP").getContext("2d");
+    if(week) {
+        week.destroy();
+    }
+
     Meteor.call("query", "select from_unixtime(p.created_on) as date, count(p.id) as trials_weekly from fbpages as p where p.published_by=0 and from_unixtime(p.created_on) between " + from + " and " + to + " group by week(date);", function(e,r) {
         var dates = [];
         var trials = [];
