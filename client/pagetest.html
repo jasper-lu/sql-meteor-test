@@ -22,15 +22,9 @@
 
 <template name="graphs">
     <div class="body">
+        <h1 class="weekly"><i class="fa fa-line-chart"></i> Weekly Data</h1>
         <div class="row">
-        {{> latestSites}}
-        {{> latestCustomers}}
-        </div>
-        <div class="row">
-            <label for="from">From</label>
-            <input type="text" id="from" name="from">
-            <label for="to">to</label>
-            <input type="text" id="to" name="to">
+            {{> datePick}}
         </div>
         <div class="row">
             {{> vampVisitsWeek}}
@@ -38,8 +32,16 @@
         </div>
         <div class="row">
             {{> visitsWeek}}
+        </div>
+        <h1 class="metrics"><i class="fa fa-dashboard"></i> Product Metrics</h1>
+        <div class="row">
+        {{> latestSites}}
+        {{> latestCustomers}}
+        </div>
+        <div class="row">
             {{> refCodes}}
         </div>
+        <h1 class="errors"><i class="fa fa-times-circle-o"></i> Oops</h1>
         <div class="row">
             {{> stripeFailures}}
             {{> vampErrors}}
@@ -47,9 +49,19 @@
     </div>
 </template>
 
+<template name="datePick">
+    <div class="date-pick">
+        <label for="from">From</label>
+        <input type="text" id="from" name="from">
+        <label for="to">to</label>
+        <input type="text" id="to" name="to">
+        <button id="refreshGraphs">Refresh</button>
+    </div>
+</template>
+
 <template name="refCodes">
 <div class="card rc-container">
-    <h2>Top Referral Codes</h2>
+    <h2><i class="fa fa-share-alt"></i> Top Referral Codes</h2>
     <div class="head inner-container">
         <div>Name</div>
         <div>Email</div>
@@ -76,26 +88,30 @@
 </template>
 
 <template name="loading">
-    loading..
+<div class="spinner-container">
+<svg class="spinner" width="195px" height="195px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+   <circle class="path" fill="none" stroke-width="2" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+   </svg>
+   </div>
 </template>
 
 <template name="vampVisitsWeek">
     <div class="card visits-container">
-    <h2>Weekly PageVamp Visits</h2>
+        <h2>PageVamp Visits</h2>
     <canvas id="visitsVampWeekly" width="800" height="400"></canvas>
     </div>
 </template>
 
 <template name="visitsWeek">
     <div class="card visits-container">
-    <h2>Weekly Site Visits</h2>
+        <h2>Site Visits</h2>
     <canvas id="visitsWeekly" width="800" height="400"></canvas>
     </div>
 </template>
 
 <template name="vampErrors">
 <div class="card sf-container">
-    <h2>Latest PageVamp Errors</h2>
+    <h2><i class="fa fa-times-circle"></i> Latest PageVamp Errors</h2>
     <div class="head inner-container">
         <div>Page Id</div>
         <div>Url</div>
@@ -126,7 +142,7 @@
 
 <template name="stripeFailures">
 <div class="card sf-container">
-    <h2>Latest Stripe Failures</h2>
+    <h2><i class="fa fa-cc-stripe"></i> Latest Stripe Failures</h2>
     <div class="head inner-container">
         <div>Name</div>
         <div>Email</div>
@@ -157,7 +173,7 @@
 <template name="weeklyVTP">
     <div class="card">
         <div class="vtp-container">
-        <h2>Weekly VTP</h2>
+            <h2>Visits to Trials</h2>
         <canvas height="400" width="800" id="weeklyVTP"></canvas>
     </div>
     </div>
@@ -165,10 +181,10 @@
 
 <template name="latestCustomers">
 <div class="card lc-container">
-    <h2>Latest Paying Customers</h2>
+    <h2><i class="fa fa-user"></i> Latest Paying Customers</h2>
     <div class="head inner-container">
-        <div>Name</div>
-        <div>Email</div>
+        <div>Name</div> 
+        <div>Email</div> 
         <div>User Id</div>
         <div>First Payment</div>
         <div>Next Payment</div>
@@ -198,7 +214,7 @@
 
 <template name="latestSites">
 <div class="card ls-container">
-    <h2>Latest Published Sites</h2>
+    <h2><i class="fa fa-sitemap"></i> Latest Published Sites</h2>
     <div class="head inner-container">
         <div class="image">Pic</div>
         <div>Name</div>

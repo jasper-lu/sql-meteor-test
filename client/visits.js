@@ -1,8 +1,12 @@
 Template.visitsWeek.rendered = function() {
+    Template.visitsWeek.loadChart("60daysAgo", "today");
+}
+
+Template.visitsWeek.loadChart = function(from, to) {
     gapi.client.analytics.data.ga.get({
         "ids" : "ga:" + 74950580,
-        "start-date": "60daysAgo",
-        "end-date": "today",
+        "start-date": from,
+        "end-date": to,
         "dimensions": "ga:isoyearisoweek",
         "metrics": "ga:sessions"
     }).execute(function(r) {
@@ -22,22 +26,22 @@ Template.visitsWeek.rendered = function() {
                 labels: weeks,
                 datasets: [{
                     data: values,
-                    fillColor: "rgba(230,126,34,.2)",
-                    strokeColor: "#e67e22",
-                    pointColor: "#e67e22",
+                    fillColor: "rgba(41,128,185,.2)",
+                    strokeColor: "#2980b9",
+                    pointColor: "#2980b9",
                     label: "Visits"
                 }]
             }
             console.log(data);
             visitsWeekly = new Chart(ctx).Line(data, {responsive: true});
     });
-}
 
-Template.vampVisitsWeek.rendered = function() {
+}
+Template.vampVisitsWeek.loadChart = function(from, to) {
     gapi.client.analytics.data.ga.get({
         "ids" : "ga:" + Session.get("table"),
-        "start-date": "60daysAgo",
-        "end-date": "today",
+        "start-date": from,
+        "end-date": to,
         "dimensions": "ga:isoyearisoweek",
         "metrics": "ga:sessions"
     }).execute(function(r) {
@@ -66,6 +70,10 @@ Template.vampVisitsWeek.rendered = function() {
             console.log(data);
             visitsWeekly = new Chart(ctx).Line(data, {responsive: true});
     });
+}
+
+Template.vampVisitsWeek.rendered = function() {
+    Template.vampVisitsWeek.loadChart("60daysAgo", "today");
 }
 
 firstDayOfWeek = function(year, week) {

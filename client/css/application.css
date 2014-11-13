@@ -247,8 +247,14 @@ header {
 
 h1 {
   text-align: center;
-  margin-top: 1em;
-  margin-bottom: 1em; }
+  font-weight: normal;
+  margin-top: 1em; }
+  h1.weekly {
+    margin-top: 0.5em; }
+  h1.metrics {
+    color: #3c985b; }
+  h1.errors {
+    color: #d62a1a; }
 
 .card {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -296,6 +302,10 @@ h1 {
         width: 31.7615656014%; }
         .card.small:last-child {
           margin-right: 0; } }
+  .card h2 {
+    margin-bottom: 0.5em;
+    font-weight: 300;
+    font-size: 1.75em; }
 
 .ls-container, .lc-container, .sf-container, .rc-container {
   word-break: break-word; }
@@ -404,3 +414,175 @@ h1 {
 .vtp-container canvas, .visits-container canvas {
   width: 100% !important;
   height: auto !important; }
+
+.date-pick {
+  margin: 0 auto;
+  margin-top: -2.5em; }
+  .date-pick label {
+    display: inline-block; }
+  .date-pick input {
+    display: inline-block;
+    width: 128px;
+    text-align: center; }
+
+/** spinner code **/
+.spinner-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px; }
+
+.spinner {
+  -webkit-animation: rotator 1.4s linear infinite;
+  -moz-animation: rotator 1.4s linear infinite;
+  animation: rotator 1.4s linear infinite; }
+
+@-webkit-keyframes rotator {
+  0% {
+    transform: rotate(0deg); }
+
+  100% {
+    transform: rotate(270deg); } }
+
+@-moz-keyframes rotator {
+  0% {
+    transform: rotate(0deg); }
+
+  100% {
+    transform: rotate(270deg); } }
+
+@-o-keyframes rotator {
+  0% {
+    transform: rotate(0deg); }
+
+  100% {
+    transform: rotate(270deg); } }
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg); }
+
+  100% {
+    transform: rotate(270deg); } }
+
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+  -moz-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite; }
+
+@-webkit-keyframes colors {
+  0% {
+    stroke: #4eb972; }
+
+  25% {
+    stroke: #e67e22; }
+
+  50% {
+    stroke: #8e44ad; }
+
+  75% {
+    stroke: #2980b9; }
+
+  100% {
+    stroke: #4eb972; } }
+
+@-moz-keyframes colors {
+  0% {
+    stroke: #4eb972; }
+
+  25% {
+    stroke: #e67e22; }
+
+  50% {
+    stroke: #8e44ad; }
+
+  75% {
+    stroke: #2980b9; }
+
+  100% {
+    stroke: #4eb972; } }
+
+@-o-keyframes colors {
+  0% {
+    stroke: #4eb972; }
+
+  25% {
+    stroke: #e67e22; }
+
+  50% {
+    stroke: #8e44ad; }
+
+  75% {
+    stroke: #2980b9; }
+
+  100% {
+    stroke: #4eb972; } }
+
+@keyframes colors {
+  0% {
+    stroke: #4eb972; }
+
+  25% {
+    stroke: #e67e22; }
+
+  50% {
+    stroke: #8e44ad; }
+
+  75% {
+    stroke: #2980b9; }
+
+  100% {
+    stroke: #4eb972; } }
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187; }
+
+  50% {
+    stroke-dashoffset: 46.75;
+    transform: rotate(135deg); }
+
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg); } }
+
+@-moz-keyframes dash {
+  0% {
+    stroke-dashoffset: 187; }
+
+  50% {
+    stroke-dashoffset: 46.75;
+    transform: rotate(135deg); }
+
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg); } }
+
+@-o-keyframes dash {
+  0% {
+    stroke-dashoffset: 187; }
+
+  50% {
+    stroke-dashoffset: 46.75;
+    transform: rotate(135deg); }
+
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg); } }
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187; }
+
+  50% {
+    stroke-dashoffset: 46.75;
+    transform: rotate(135deg); }
+
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg); } }
