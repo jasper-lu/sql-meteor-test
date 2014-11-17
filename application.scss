@@ -1,0 +1,57 @@
+/* CSS declarations go here */
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "base/base";
+
+.body {
+    width:80%;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align:center;
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
+.winner {
+    background-color: #2980b9; 
+}
+
+.loser {
+    background-color: #e74c3c;
+}
+
+.winner, .loser {
+    padding:16px;
+    box-shadow: 4px black;
+    font-size:1.5em;
+    font-weight:bold;
+    color:white;
+    text-align:center;
+    cursor:pointer;
+    @include span-columns(2 of 4, inline-block);
+    @include user-select(none);
+    .score {
+        &.hidden {
+            display:none;
+        }
+    }
+}
+
+.game {
+    @include outer-container;
+}
+
+.match {
+    @include outer-container;
+    &.header {
+        .winner, .loser {
+            color:black;
+            background-color:white;
+        }
+    }
+    padding-top:.5em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid grey;
+}

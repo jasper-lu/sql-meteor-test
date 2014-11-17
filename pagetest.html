@@ -1,0 +1,39 @@
+<head>
+<title>pagetest</title>
+</head>
+
+<body>
+<div class="body">
+<h1>Comparison of elo in winning and losing games</h1>
+{{> game}}
+</div>
+</body>
+
+<template name="game">
+<div class="game">
+    <div class="match header">
+        <div class="winner">
+            Winners
+        </div>
+
+        <div class="loser">
+            Losers
+        </div>
+    </div>
+
+{{#each matches}}
+{{> match}}
+{{/each}}
+</div>
+</template>
+
+<template name="match">
+<div class="match">
+    <div class="role winner {{winner}}">
+        {{winner}}
+    </div>
+    <div class="role loser {{loser}}">
+        {{loser}}
+    </div>
+</div>
+</template>
