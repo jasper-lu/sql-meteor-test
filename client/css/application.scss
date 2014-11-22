@@ -4,10 +4,11 @@
 @import "base/base";
 
 $main-color:#4eb972;
-$other-color: blue;
+$other-color: #e67e22;
+$third-color: #8e44ad;
 $link-blue:#2980b9; 
 
-$small-screen: new-breakpoint(max-width:960px);
+$small-screen: new-breakpoint(max-width 960px);
 
 * {
     @include box-sizing(border-box);
@@ -35,6 +36,7 @@ $small-screen: new-breakpoint(max-width:960px);
 html, body {
     padding: 0;
     margin: 0;
+    background-color:#e9e9e9;
 }
 
 .body {
@@ -69,11 +71,18 @@ h1 {
     background-color:white;
     padding:1em;
     border-radius: 4px;
+    margin-top:1em;
     width:auto;
     height:auto;
     @include span-columns(6 of 12);
     @include media($small-screen) {
-        @include span-columnts(12 of 12);
+        @include span-columns(12 of 12);
+    }
+    &.small {
+        @include span-columns(4 of 12);
+        @include media($small-screen) {
+            @include span-columns(4 of 12);
+        }
     }
 }
 

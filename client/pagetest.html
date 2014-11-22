@@ -9,10 +9,29 @@
     <h3><i class="fa fa-dashboard"></i> Pagevamp Metrics Dashboard</h3>
     </header>
     <div class="body">
+        <div>
         {{> latestSites}}
         {{> latestCustomers}}
+        </div>
+        <div>
+            {{> monthlyVTP}}
+        </div>
     </div>
 </body>
+
+<template name="weeklyVTP">
+    <div class="card small">
+        <h2>Weekly VTP</h2>
+
+    </div>
+</template>
+
+<template name="monthlyVTP">
+    <div class="card small">
+        <h2>Monthly VTP</h2>
+        <canvas id="monthlyVTP"></canvas>
+    </div>
+</template>
 
 <template name="latestCustomers">
 <div class="card lc-container">
